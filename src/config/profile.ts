@@ -29,12 +29,19 @@ export type SocialProofEntry = {
 	source?: string;
 };
 
+export type SkillLevel = 1 | 2 | 3 | 4 | 5;
+
+export type SkillItem = {
+	name: string;
+	years: number;
+	level: SkillLevel;
+};
+
 export type SkillCluster = {
 	title: string;
 	focus: 'Primary focus' | 'Core lane' | 'Supporting lane';
-	headline: string;
-	bullets: string[];
-	pills: string[];
+	headline?: string;
+	skills: SkillItem[];
 };
 
 export type GalleryImage = {
@@ -157,45 +164,51 @@ export const skillsSnapshot: SkillCluster[] = [
 		title: 'Healthcare analytics & quality',
 		focus: 'Primary focus',
 		headline: 'Epic Clarity SQL, heart failure measures, and Vizient O/E analysis for clinical improvement.',
-		bullets: [
-			'Builds Epic Clarity + EDW views for readmissions, EF capture, and GDMT. Clinicians open one reliable dashboard every morning.',
-			'Pairs Power BI with Vizient benchmarking and ICD-10 cohorts to flag gaps before cardiology and quality rounds.',
-			'Leads weekly huddles with cardiology, nursing, and quality to turn shifts into action plans and briefs that travel before rounds.'
-		],
-		pills: ['Epic Clarity', 'Power BI', 'Vizient', 'Benchmarking', 'Heart failure measures', 'ICD-10 cohorts', 'EDW']
+		skills: [
+			{ name: 'Epic Clarity SQL', years: 8, level: 5 },
+			{ name: 'Quality benchmarking (Vizient)', years: 6, level: 4 },
+			{ name: 'Heart failure measures / GDMT', years: 6, level: 4 },
+			{ name: 'Power BI & dashboarding', years: 7, level: 4 },
+			{ name: 'EDW architecture', years: 8, level: 4 }
+		]
 	},
 	{
 		title: 'Data platforms & engineering',
 		focus: 'Primary focus',
 		headline: 'Cloud-native workflows across GCP, AWS, and Azure for ETL, CDPs, and BI.',
-		bullets: [
-			'Ships Python/SQL services across GCP, AWS, and Azure feeding Looker + Treasure Data. Thirty brands share the same metrics.',
-			'Migrates legacy stacks into governed cloud warehouses that cut processing time in half and steady marketing and finance ops.',
-			'Built and ran the signal stack for Rolling Stone covers and every Billboard chart. Editors had the drop brief before anyone else.'
-		],
-		pills: ['GCP', 'AWS', 'Azure', 'Looker', 'Treasure Data CDP', 'Python', 'SQL', 'ETL automation', 'Data warehousing']
+		skills: [
+			{ name: 'Python ETL services', years: 10, level: 5 },
+			{ name: 'SQL + data modeling', years: 12, level: 5 },
+			{ name: 'GCP / BigQuery', years: 7, level: 4 },
+			{ name: 'AWS (Redshift + Glue)', years: 6, level: 4 },
+			{ name: 'Azure + Synapse', years: 5, level: 3 },
+			{ name: 'Looker / BI sematics', years: 5, level: 4 },
+			{ name: 'Treasure Data CDP', years: 4, level: 3 }
+		]
 	},
 	{
 		title: 'AI & advanced analytics',
 		focus: 'Supporting lane',
 		headline: 'LLM fine-tuning, vendor evaluation, and research-grade modeling.',
-		bullets: [
-			'Ran vendor reviews on a $5M AI budget and fine-tuned editorial LLMs with scoring loops. Newsrooms and legal trust the copy.',
-			'Prototyped RAG agents that surface financial, engagement, and editorial answers for execs without pinging analytics.',
-			'Applies topic modeling, segmentation, and seasonal forecasting across patient and media data. Teams spot plays before dashboards refresh.'
-		],
-		pills: ['LLMs', 'RAG', 'Vendor evaluation', 'Topic modeling', 'Seasonal forecasting', 'Fine-tuning', 'Generative QA']
+		skills: [
+			{ name: 'LLM fine-tuning / eval', years: 3, level: 3 },
+			{ name: 'Retrieval augmented agents', years: 2, level: 3 },
+			{ name: 'Vendor sourcing / diligence', years: 6, level: 4 },
+			{ name: 'Topic + seasonal modeling', years: 7, level: 4 },
+			{ name: 'Forecasting & segmentation', years: 8, level: 4 }
+		]
 	},
 	{
 		title: 'Stakeholder enablement',
 		focus: 'Core lane',
 		headline: 'Bridges clinical, editorial, and exec teams with concise reporting.',
-		bullets: [
-			'Advises 25+ brand leaders with KPI reporting that backs $1B portfolios and coverage plays at Rolling Stone, Billboard, and Footwear News.',
-			'Runs requirement sessions across cardiology, marketing, design, and analytics so every roadmap balances compliance and ambition.',
-			'Publishes one-pagers, dashboards, and decision briefs that replace sprawling decks with clear asks leadership can circulate fast.'
-		],
-		pills: ['Executive reporting', 'Audience marketing', 'KPI standards', 'Narrative decks', 'Clinical partnerships', 'Data systems']
+		skills: [
+			{ name: 'Executive KPI reporting', years: 9, level: 5 },
+			{ name: 'Clinical + editorial facilitation', years: 8, level: 4 },
+			{ name: 'Requirements + intake ops', years: 10, level: 5 },
+			{ name: 'Roadmap + GTM briefs', years: 8, level: 4 },
+			{ name: 'Narrative decks & comms', years: 12, level: 5 }
+		]
 	}
 ];
 
