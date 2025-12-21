@@ -79,7 +79,7 @@ export const actionLinks: ActionLink[] = [
 	},
 	{
 		label: 'Download the one-pager',
-		href: 'https://resume.jnap.me/one-pager.pdf',
+		href: 'https://resume.jnap.me/resume.pdf',
 		description: 'Snapshot of metrics and work samples.',
 		accent: 'from-rose-400/80 to-amber-300/80',
 		icon: '/icons/placeholder.svg',

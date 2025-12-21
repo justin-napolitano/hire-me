@@ -1,7 +1,22 @@
 ---
-import { profile, actionLinks } from '../config/profile';
+import { profile } from '../config/profile';
+
+const primaryCtas = [
+	{
+		label: 'Email a brief',
+		href: 'mailto:justin@justin-napolitano.com',
+		description: 'Reply within 24 hours with next steps.'
+	},
+	{
+		label: 'Book intro on Cal',
+		href: 'https://cal.com/justin-napolitano-gvu3p3/intro',
+		description: '15 minutes to trade context.',
+		external: true
+	}
+];
+
 ---
-<section class="rounded-3xl border border-rose-50/10 bg-[#1a1310]/80 p-8 shadow-2xl shadow-rose-500/20">
+<section class="rounded-3xl border border-rose-50/10 bg-gradient-to-br from-[#201512]/95 to-[#120906]/90 p-8 shadow-2xl shadow-rose-500/15">
 	<div class="flex flex-col gap-5">
 		<span class="w-fit rounded-full border border-amber-200/40 bg-amber-200/10 px-3 py-1 text-[0.8rem] uppercase tracking-[0.2em] text-amber-100">
 			Verified
@@ -15,25 +30,23 @@ import { profile, actionLinks } from '../config/profile';
 			</div>
 		</div>
 		{profile.verificationSummary && (
-			<div class="rounded-2xl border border-rose-50/10 bg-[#130c09]/80 px-4 py-3">
+			<div class="rounded-2xl border border-rose-50/15 bg-[#140b08]/80 px-4 py-3">
 				<p class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-rose-200/70">Verification summary</p>
 				<p class="mt-1 text-sm text-rose-50/80">{profile.verificationSummary}</p>
 			</div>
 		)}
-		<div class="grid gap-3 md:grid-cols-3">
-			{actionLinks.map((action) => (
-				<a
-					class="group flex items-center gap-3 rounded-2xl border border-rose-50/10 bg-[#1b1310]/80 px-4 py-3 text-left transition hover:border-amber-200/50 hover:bg-[#25170f]"
-					href={action.href}
-					target={action.external ? '_blank' : undefined}
-					rel={action.external ? 'noreferrer' : undefined}
-				>
-					<div class="flex flex-col">
-						<span class="text-base font-semibold text-white">{action.label}</span>
-						{action.description && <span class="text-sm text-rose-200/80">{action.description}</span>}
-					</div>
-				</a>
-			))}
+			<div class="flex flex-col gap-3 sm:flex-row">
+				{primaryCtas.map((cta) => (
+					<a
+						class="inline-flex flex-1 flex-col rounded-2xl bg-[#f15f4e] px-5 py-3 text-left text-white shadow-lg shadow-[#f15f4e]/30 transition transform hover:bg-[#f47b69] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f47b69]"
+						href={cta.href}
+						target={cta.external ? '_blank' : undefined}
+						rel={cta.external ? 'noreferrer' : undefined}
+					>
+						<span class="text-base font-semibold">{cta.label}</span>
+						{cta.description && <span class="text-sm text-[#ffe7e0]">{cta.description}</span>}
+					</a>
+				))}
+			</div>
 		</div>
-	</div>
 </section>
