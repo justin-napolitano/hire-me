@@ -1,0 +1,35 @@
+---
+import { skillsSnapshot } from '../config/profile';
+---
+<section class="rounded-3xl border border-rose-50/10 bg-[#150e0c]/85 p-8">
+	<header class="mb-6 flex flex-col gap-2">
+		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Skill coverage</p>
+		<h2 class="text-3xl font-semibold text-white">Snapshot of where I specialize</h2>
+		<p class="text-sm text-rose-200/80">
+			Grounded in healthcare analytics and data platforms, with AI and stakeholder chops built across hospital systems and national media brands.
+		</p>
+	</header>
+	<div class="grid gap-4 md:grid-cols-2">
+		{skillsSnapshot.map((cluster) => (
+			<article class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/80 p-5">
+				<div class="flex items-center justify-between text-[0.7rem] uppercase tracking-[0.2em] text-rose-300/70">
+					<span>{cluster.title}</span>
+					<span class="rounded-full border border-rose-50/20 px-3 py-1 text-[0.55rem] tracking-[0.25em] text-amber-200">
+						{cluster.focus}
+					</span>
+				</div>
+				<p class="mt-3 text-base font-semibold text-white">{cluster.headline}</p>
+				<div class="mt-3 flex flex-wrap gap-2">
+					{cluster.pills.map((pill) => (
+						<span class="rounded-full border border-rose-50/10 bg-[#221712]/70 px-3 py-1 text-xs text-rose-50/80">{pill}</span>
+					))}
+				</div>
+				<ul class="mt-3 space-y-2 text-sm text-rose-100/85">
+					{cluster.bullets.map((bullet) => (
+						<li class="rounded-xl border border-rose-50/5 bg-[#211511]/70 px-3 py-2">{bullet}</li>
+					))}
+				</ul>
+			</article>
+		))}
+	</div>
+</section>

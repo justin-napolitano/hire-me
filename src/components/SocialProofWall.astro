@@ -1,0 +1,23 @@
+---
+import { socialProofEntries } from '../config/profile';
+---
+<section class="rounded-3xl border border-rose-50/10 bg-[#150e0c]/80 p-8">
+	<header class="mb-6 flex flex-col gap-2">
+		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">References</p>
+		<h2 class="text-3xl font-semibold text-white">Partners who have vouched for the work</h2>
+		<p class="text-rose-200/80">
+			Select quotes from managers, partner teams, and agency leads I've supported directly.
+		</p>
+	</header>
+	<div class="grid gap-4 md:grid-cols-3">
+		{socialProofEntries.map((proof) => (
+			<article class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/80 p-5">
+				<p class="text-base text-rose-50">“{proof.quote}”</p>
+				<div class="mt-4 text-sm text-rose-300/80">
+					<p class="font-semibold text-rose-100">{proof.author}</p>
+					{proof.title && <p>{proof.title}</p>}
+				</div>
+			</article>
+		))}
+	</div>
+</section>

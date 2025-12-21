@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+
+type Props = {
+	title?: string;
+	description?: string;
+};
+
+const {
+	title = 'Justin Napolitano',
+	description = 'Social proof forward dating profile experience.'
+} = Astro.props as Props;
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-[#120d0b]">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body class="min-h-screen bg-transparent text-rose-50 antialiased">
+		<slot />
+	</body>
+</html>

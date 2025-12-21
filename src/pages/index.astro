@@ -1,0 +1,19 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import WinsBar from '../components/WinsBar.astro';
+import SkillsSnapshot from '../components/SkillsSnapshot.astro';
+import AdventurePitchForm from '../components/AdventurePitchForm.astro';
+import CalEmbed from '../components/CalEmbed.astro';
+import Toolchain from '../components/Toolchain.astro';
+---
+<PageLayout title="Justin Napolitano" description="A social-proof-heavy dating profile landing page">
+	<main class="mx-auto flex max-w-5xl flex-col gap-12 px-4 py-12 sm:px-8">
+		<HeroSection />
+		<WinsBar />
+		<Toolchain />
+		<SkillsSnapshot />
+		<AdventurePitchForm />
+		<CalEmbed />
+	</main>
+</PageLayout>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Justin monogram">
+  <defs>
+    <radialGradient id="glow" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#f8c8a8" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#f4a4a4" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#21120f" stop-opacity="0.9" />
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#1a0f0d" />
+  <circle cx="64" cy="58" r="48" fill="url(#glow)" opacity="0.9" />
+  <path
+    d="M42 40h10c4.5 0 8 3.5 8 8v32c0 8.6-6.4 16-16 16h-2"
+    fill="none"
+    stroke="#fff6ef"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M76 40v48c0 10 6 16 16 16 8.5 0 16-6 16-14"
+    fill="none"
+    stroke="#f7caa7"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M76 28c0 6-5 11-11 11" stroke="#f7caa7" stroke-width="6" stroke-linecap="round" fill="none" />
+</svg>

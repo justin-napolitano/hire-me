@@ -1,0 +1,34 @@
+---
+import { galleryImages } from '../config/profile';
+const instagramHandle = 'jay.b.napolitano';
+---
+<section class="rounded-3xl border border-white/10 bg-slate-900/40 p-6">
+	<header class="mb-6 flex flex-col gap-2">
+		<p class="text-sm uppercase tracking-[0.3em] text-slate-400">Visual evidence</p>
+		<h2 class="text-2xl font-semibold text-white">Instagram proof I leave my apartment</h2>
+		<p class="text-base text-slate-300">
+			Fresh posts straight from @{instagramHandle}. Expect coffee cups, rooftops, dinner tables, and
+			the people who keep me accountable.
+		</p>
+	</header>
+	<div class="grid gap-4 sm:grid-cols-2">
+		{galleryImages.map((image) => (
+			<a
+				class="group relative overflow-hidden rounded-2xl border border-white/5"
+				href={image.href ?? `https://instagram.com/${instagramHandle}`}
+				target="_blank"
+				rel="noreferrer"
+			>
+				<img src={image.src} alt={image.alt} class="h-72 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+				<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+				<div class="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-sm text-white">
+					<div>
+						<p class="font-semibold">{image.caption}</p>
+						{image.location && <p class="text-xs text-white/80">{image.location}</p>}
+					</div>
+					<span class="rounded-full border border-white/50 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide">Open IG</span>
+				</div>
+			</a>
+		))}
+	</div>
+</section>

@@ -1,0 +1,161 @@
+---
+const introCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/intro';
+---
+<section
+	id="project-brief"
+	class="rounded-3xl border border-rose-50/15 bg-[#150e0c]/85 p-8 shadow-lg shadow-amber-500/10"
+	data-cal={introCalUrl}
+>
+	<div class="flex flex-col gap-6">
+		<header class="flex flex-col gap-2">
+			<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Project brief</p>
+			<h2 class="text-3xl font-semibold text-white">Tell me about the role or sprint</h2>
+			<p class="text-base text-slate-300">
+				Share who\'s involved, how success is defined, timelines, and any constraints—I respond quickly with the best path forward.
+			</p>
+		</header>
+		<form id="brief-form" class="grid gap-4" method="post" action="/api/pitch">
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				Contact name
+				<input
+					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					type="text"
+					name="name"
+					required
+					placeholder="You, the team, or agency lead"
+				/>
+			</label>
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				Best reply channel
+				<input
+					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					type="text"
+					name="contact"
+					required
+					placeholder="Email, Signal, or phone"
+				/>
+			</label>
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				Project or role details
+				<textarea
+					class="min-h-[140px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					name="adventure"
+					required
+					placeholder="Lifecycle relaunch, marketing ops overhaul, embedded GTM lead—be specific"
+				></textarea>
+			</label>
+			<div class="grid gap-4 md:grid-cols-2">
+				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+					Ideal timing
+					<input
+						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+						type="text"
+						name="timeline"
+						placeholder="Next quarter, ASAP, pilot window, etc."
+					/>
+				</label>
+				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+					Team vibe / constraints
+					<input
+						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+						type="text"
+						name="vibes"
+						placeholder="Hands-on, fully remote, budget guardrails, etc."
+					/>
+				</label>
+			</div>
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				Anything else I should know?
+				<textarea
+					class="min-h-[100px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					name="extras"
+					placeholder="Budget, stakeholders, decision timelines, other notes"
+				></textarea>
+			</label>
+			<div class="flex flex-col gap-2">
+				<button
+					type="submit"
+					class="inline-flex items-center justify-center rounded-2xl bg-amber-300 px-6 py-3 text-base font-semibold text-[#1c120e] transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
+				>
+					Send the brief
+				</button>
+				<a
+					href={introCalUrl}
+					target="_blank"
+					rel="noreferrer"
+					class="text-sm text-rose-200/80 underline-offset-4 transition hover:text-white hover:underline"
+				>
+					Already aligned? Book the intro.
+				</a>
+			</div>
+		</form>
+		<p id="brief-feedback" class="text-sm text-rose-200/80" aria-live="polite">
+			Expect a reply from justin@justin-napolitano.com once I review the calendar. Already in motion?
+			<a class="text-emerald-300 underline-offset-4 hover:underline" href={introCalUrl} target="_blank" rel="noreferrer">
+				cal.com/justin-napolitano-gvu3p3/intro
+			</a>
+		</p>
+	</div>
+</section>
+<script is:inline>
+	const section = document.getElementById('project-brief');
+	const form = document.getElementById('brief-form');
+	const feedback = document.getElementById('brief-feedback');
+	const submitButton = form?.querySelector('button[type="submit"]');
+	const defaultButtonText = submitButton?.textContent ?? '';
+	const calUrl = section?.dataset.cal ?? '';
+
+	function setFeedback(message, state, asHtml = false) {
+		if (!feedback) return;
+		if (asHtml) {
+			feedback.innerHTML = message;
+		} else {
+			feedback.textContent = message;
+		}
+		feedback.classList.remove('text-amber-300', 'text-rose-300');
+		if (state === 'success') {
+			feedback.classList.add('text-amber-300');
+		} else if (state === 'error') {
+			feedback.classList.add('text-rose-300');
+		}
+	}
+
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		if (!form) return;
+		const formData = new FormData(form);
+		const payload = Object.fromEntries(formData.entries());
+		setFeedback('Sending your brief...', 'loading');
+		if (submitButton) {
+			submitButton.disabled = true;
+			submitButton.textContent = 'Sending...';
+		}
+
+		try {
+			const response = await fetch(form.action, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			});
+			const result = await response.json().catch(() => ({}));
+			if (!response.ok || !result?.success) {
+				throw new Error(result?.error ?? 'Unable to send the brief right now. Try again.');
+			}
+			form.reset();
+			const successMessage = calUrl
+				? `Brief received. Expect next steps soon — or grab a slot via <a class="underline" target="_blank" rel="noreferrer" href="${calUrl}">Cal</a>.`
+				: 'Brief received. Expect next steps soon.';
+			setFeedback(successMessage, 'success', Boolean(calUrl));
+		} catch (error) {
+			const message = error instanceof Error ? error.message : 'Unknown error. Please try again soon.';
+			setFeedback(message, 'error');
+		} finally {
+			if (submitButton) {
+				submitButton.disabled = false;
+				submitButton.textContent = defaultButtonText;
+			}
+		}
+	});
+</script>

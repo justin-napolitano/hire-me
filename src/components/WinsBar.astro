@@ -1,0 +1,14 @@
+---
+import { wins } from '../config/profile';
+---
+<section class="rounded-3xl border border-rose-50/10 bg-[#1b1310]/85 p-6">
+	<ul class="grid gap-4 sm:grid-cols-3">
+		{wins.map((win) => (
+			<li class="rounded-2xl border border-rose-50/10 bg-[#241611]/80 p-4">
+				<p class="text-xs uppercase tracking-[0.2em] text-rose-300/70">{win.label}</p>
+				<p class="mt-2 text-2xl font-semibold text-white">{win.value}</p>
+				<p class="mt-1 text-sm text-rose-100/80">{win.detail}</p>
+			</li>
+		))}
+	</ul>
+</section>
