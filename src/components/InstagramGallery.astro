@@ -1,18 +1,35 @@
 ---
-import { galleryImages } from '../config/profile';
-const instagramHandle = 'jay.b.napolitano';
+import type { GalleryImage } from '../config/profile';
+
+type Props = {
+	images?: GalleryImage[];
+	instagramHandle?: string;
+	eyebrow?: string;
+	title?: string;
+	description?: string;
+};
+
+const {
+	images = [],
+	instagramHandle = 'jay.b.napolitano',
+	eyebrow = 'Visual evidence',
+	title = 'Instagram proof I leave my apartment',
+	description = 'Expect coffee cups, rooftops, dinner tables, and the people who keep me accountable.'
+} = Astro.props as Props;
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-6">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-sm uppercase tracking-[0.3em] text-[var(--text-label)]">Visual evidence</p>
-		<h2 class="text-2xl font-semibold text-[var(--text-primary)]">Instagram proof I leave my apartment</h2>
-		<p class="text-base text-[var(--text-secondary)]">
-			Fresh posts straight from @{instagramHandle}. Expect coffee cups, rooftops, dinner tables, and
-			the people who keep me accountable.
-		</p>
+		{eyebrow && <p class="text-sm uppercase tracking-[0.3em] text-[var(--text-label)]">{eyebrow}</p>}
+		{title && <h2 class="text-2xl font-semibold text-[var(--text-primary)]">{title}</h2>}
+		{description && (
+			<p class="text-base text-[var(--text-secondary)]">
+				Fresh posts straight from @{instagramHandle}. {description}
+			</p>
+		)}
 	</header>
-	<div class="grid gap-4 sm:grid-cols-2">
-		{galleryImages.map((image) => (
+	{images.length ? (
+		<div class="grid gap-4 sm:grid-cols-2">
+			{images.map((image) => (
 			<a
 				class="group relative overflow-hidden rounded-2xl border border-[var(--border-soft)]"
 				href={image.href ?? `https://instagram.com/${instagramHandle}`}
@@ -24,11 +41,14 @@ const instagramHandle = 'jay.b.napolitano';
 				<div class="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-sm text-[var(--accent-contrast)]">
 					<div>
 						<p class="font-semibold">{image.caption}</p>
-					{image.location && <p class="text-xs text-[var(--accent-contrast)] opacity-80">{image.location}</p>}
+						{image.location && <p class="text-xs text-[var(--accent-contrast)] opacity-80">{image.location}</p>}
 					</div>
 					<span class="rounded-full border border-white/60 bg-white/20 px-3 py-1 text-xs uppercase tracking-wide text-[var(--accent-contrast)]">Open IG</span>
 				</div>
 			</a>
-		))}
-	</div>
+			))}
+		</div>
+	) : (
+		<p class="text-sm text-[var(--text-muted)]">Add gallery images to showcase Instagram content.</p>
+	)}
 </section>

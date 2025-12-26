@@ -26,7 +26,7 @@ const buildEmailBody = (fields: Record<string, string>) => {
 		lines.push('', 'Extras:', fields.extras);
 	}
 
-	lines.push('', 'Sent via dating-profile landing page.');
+	lines.push('', 'Sent via hire-me landing page.');
 	return lines.join('\n');
 };
 

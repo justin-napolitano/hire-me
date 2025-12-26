@@ -1,23 +1,40 @@
 ---
-import { socialProofEntries } from '../config/profile';
+import type { SocialProofEntry } from '../config/profile';
+
+type Props = {
+	entries?: SocialProofEntry[];
+	eyebrow?: string;
+	title?: string;
+	description?: string;
+};
+
+const {
+	entries = [],
+	eyebrow = 'References',
+	title = 'Partners who have vouched for the work',
+	description = "Select quotes from managers, partner teams, and agency leads I've supported directly."
+} = Astro.props as Props;
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-8">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">References</p>
-		<h2 class="text-3xl font-semibold text-[var(--text-primary)]">Partners who have vouched for the work</h2>
-		<p class="text-[var(--text-muted)]">
-			Select quotes from managers, partner teams, and agency leads I've supported directly.
-		</p>
+		{eyebrow && <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">{eyebrow}</p>}
+		{title && <h2 class="text-3xl font-semibold text-[var(--text-primary)]">{title}</h2>}
+		{description && <p class="text-[var(--text-muted)]">{description}</p>}
 	</header>
-	<div class="grid gap-4 md:grid-cols-3">
-		{socialProofEntries.map((proof) => (
-			<article class="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)] p-5">
-				<p class="text-base text-[var(--text-secondary)]">“{proof.quote}”</p>
-				<div class="mt-4 text-sm text-[var(--text-muted)]">
-					<p class="font-semibold text-[var(--text-primary)]">{proof.author}</p>
-					{proof.title && <p>{proof.title}</p>}
-				</div>
-			</article>
-		))}
-	</div>
+	{entries.length ? (
+		<div class="grid gap-4 md:grid-cols-3">
+			{entries.map((proof) => (
+				<article class="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)] p-5">
+					<p class="text-base text-[var(--text-secondary)]">“{proof.quote}”</p>
+					<div class="mt-4 text-sm text-[var(--text-muted)]">
+						<p class="font-semibold text-[var(--text-primary)]">{proof.author}</p>
+						{proof.title && <p>{proof.title}</p>}
+						{proof.source && <p class="text-xs text-[var(--text-soft)]">{proof.source}</p>}
+					</div>
+				</article>
+			))}
+		</div>
+	) : (
+		<p class="text-sm text-[var(--text-muted)]">Add social proof entries to highlight references.</p>
+	)}
 </section>
