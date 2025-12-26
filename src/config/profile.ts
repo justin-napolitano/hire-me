@@ -7,6 +7,13 @@ export type ActionLink = {
 	external?: boolean;
 };
 
+export type ProfileSummary = {
+	name: string;
+	location: string;
+	tagline?: string;
+	verificationSummary?: string;
+};
+
 export type WorkLink = {
 	label: string;
 	href: string;
@@ -20,6 +27,12 @@ export type StatusEntry = {
 	text: string;
 	days?: number[]; // 0-6, Sunday based
 	hours?: [number, number]; // 24h window
+};
+
+export type StatusTickerConfig = {
+	intervalMs?: number;
+	override?: string;
+	statuses: StatusEntry[];
 };
 
 export type SocialProofEntry = {
@@ -67,13 +80,27 @@ export type WinStat = {
 	detail: string;
 };
 
-export const profile = {
+export const profile: ProfileSummary = {
 	name: 'Justin Napolitano',
 	location: 'Orlando, FL',
 	tagline: 'Healthcare analytics + media audience ops leader turning messy data into predictable launches and coverage.',
 	verificationSummary:
 		'Trusted by hospital quality teams and national media brands (Rolling Stone, Billboard, Footwear News) across launches, restructures, and the follow-through that keeps them on track.'
 };
+
+export const primaryCtas: ActionLink[] = [
+	{
+		label: 'Email a brief',
+		href: 'mailto:justin@justin-napolitano.com',
+		description: 'Reply within 24 hours with next steps.'
+	},
+	{
+		label: 'Book intro on Cal',
+		href: 'https://cal.com/justin-napolitano-gvu3p3/intro',
+		description: '15 minutes to trade context.',
+		external: true
+	}
+];
 
 export const actionLinks: ActionLink[] = [
 	{
@@ -126,7 +153,7 @@ export const workLinks: WorkLink[] = [
 	}
 ];
 
-export const statusTickerConfig = {
+export const statusTickerConfig: StatusTickerConfig = {
 	intervalMs: 6500,
 	override: '',
 	statuses: [

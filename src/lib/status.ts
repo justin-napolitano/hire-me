@@ -1,4 +1,4 @@
-import { statusTickerConfig, type StatusEntry } from '../config/profile';
+import { statusTickerConfig, type StatusEntry, type StatusTickerConfig } from '../config/profile';
 
 type StatusPayload = {
 	statuses: StatusEntry[];
@@ -24,21 +24,21 @@ const matchesHour = (status: StatusEntry, date: Date) => {
 	return hour >= start || hour <= end;
 };
 
-export const getStatusOverride = () => {
+export const getStatusOverride = (config: StatusTickerConfig = statusTickerConfig) => {
 	return (
 		import.meta.env.PUBLIC_STATUS_OVERRIDE?.trim() ||
 		import.meta.env.STATUS_OVERRIDE?.trim() ||
-		statusTickerConfig.override?.trim() ||
+		config.override?.trim() ||
 		''
 	);
 };
 
-export const buildTickerPayload = (date = new Date()): StatusPayload => {
-	const filtered = statusTickerConfig.statuses.filter((status) => matchesDay(status, date) && matchesHour(status, date));
+export const buildTickerPayload = (config: StatusTickerConfig = statusTickerConfig, date = new Date()): StatusPayload => {
+	const filtered = config.statuses.filter((status) => matchesDay(status, date) && matchesHour(status, date));
 	return {
-		statuses: filtered.length ? filtered : statusTickerConfig.statuses,
-		intervalMs: statusTickerConfig.intervalMs ?? defaultInterval,
-		override: getStatusOverride() || undefined
+		statuses: filtered.length ? filtered : config.statuses,
+		intervalMs: config.intervalMs ?? defaultInterval,
+		override: getStatusOverride(config) || undefined
 	};
 };
 

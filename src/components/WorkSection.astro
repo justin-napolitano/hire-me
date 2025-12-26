@@ -1,12 +1,26 @@
 ---
-import { workLinks } from '../config/profile';
+import type { WorkLink } from '../config/profile';
+
+type Props = {
+	links?: WorkLink[];
+	eyebrow?: string;
+	title?: string;
+};
+
+const {
+	links = [],
+	eyebrow = 'Work',
+	title
+} = Astro.props as Props;
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-8">
 	<header class="mb-4">
-		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Work</p>
+		{eyebrow && <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">{eyebrow}</p>}
+		{title && <h2 class="text-2xl font-semibold text-[var(--text-primary)]">{title}</h2>}
 	</header>
-	<div class="grid gap-4 md:grid-cols-3">
-		{workLinks.map((link) => (
+	{links.length ? (
+		<div class="grid gap-4 md:grid-cols-3">
+			{links.map((link) => (
 			<a
 				class="group flex items-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-card-muted)] px-4 py-3 text-left transition hover:border-[var(--border-heavy)] hover:bg-[var(--surface-card)]"
 				href={link.href}
@@ -21,6 +35,9 @@ import { workLinks } from '../config/profile';
 					{link.description && <span class="text-sm text-[var(--text-muted)]">{link.description}</span>}
 				</div>
 			</a>
-		))}
-	</div>
+			))}
+		</div>
+	) : (
+		<p class="text-sm text-[var(--text-muted)]">Add work links to populate this section.</p>
+	)}
 </section>

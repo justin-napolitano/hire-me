@@ -1,9 +1,23 @@
 ---
 import ActionButtons from './ActionButtons.astro';
+import type { ActionLink } from '../config/profile';
+
+type Props = {
+	actions?: ActionLink[];
+	eyebrow?: string;
+	title?: string;
+};
+
+const {
+	actions = [],
+	eyebrow = 'Links',
+	title
+} = Astro.props as Props;
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-8">
 	<header class="mb-4">
-		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Links</p>
+		{eyebrow && <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">{eyebrow}</p>}
+		{title && <h2 class="text-2xl font-semibold text-[var(--text-primary)]">{title}</h2>}
 	</header>
-	<ActionButtons />
+	{actions.length ? <ActionButtons actions={actions} /> : <p class="text-sm text-[var(--text-muted)]">Add actions to show links.</p>}
 </section>

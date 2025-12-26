@@ -1,5 +1,5 @@
 ---
-import { skillsSnapshot } from '../config/profile';
+import type { SkillCluster } from '../config/profile';
 
 const DOT_COUNT = 6;
 const levelLabels: Record<number, string> = {
@@ -16,17 +16,30 @@ const clampYearsForDots = (years: number = 0) => {
 };
 
 const labelForLevel = (level: number) => levelLabels[level] ?? '';
+
+type Props = {
+	clusters?: SkillCluster[];
+	eyebrow?: string;
+	title?: string;
+	description?: string;
+};
+
+const {
+	clusters = [],
+	eyebrow = 'Skill coverage',
+	title = 'Snapshot of where I specialize',
+	description = 'Focus lanes with tactile read on years in the stack rather than blocks of text.'
+} = Astro.props as Props;
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-8">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Skill coverage</p>
-		<h2 class="text-3xl font-semibold text-[var(--text-primary)]">Snapshot of where I specialize</h2>
-		<p class="text-sm text-[var(--text-muted)]">
-			Focus lanes with tactile read on years in the stack rather than blocks of text.
-		</p>
+		{eyebrow && <p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">{eyebrow}</p>}
+		{title && <h2 class="text-3xl font-semibold text-[var(--text-primary)]">{title}</h2>}
+		{description && <p class="text-sm text-[var(--text-muted)]">{description}</p>}
 	</header>
-	<div class="grid gap-4 md:grid-cols-2">
-		{skillsSnapshot.map((cluster) => {
+	{clusters.length ? (
+		<div class="grid gap-4 md:grid-cols-2">
+			{clusters.map((cluster) => {
 			const primary = cluster.focus === 'Primary focus';
 			const cardClasses = primary
 				? 'rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-card)] p-5 shadow-lg'
@@ -69,6 +82,9 @@ const labelForLevel = (level: number) => levelLabels[level] ?? '';
 				</ul>
 				</article>
 			);
-		})}
-	</div>
+			})}
+		</div>
+	) : (
+		<p class="text-sm text-[var(--text-muted)]">Add at least one skill cluster to render this section.</p>
+	)}
 </section>

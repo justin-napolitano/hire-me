@@ -7,14 +7,15 @@ import AdventurePitchForm from '../components/AdventurePitchForm.astro';
 import CalEmbed from '../components/CalEmbed.astro';
 import Toolchain from '../components/Toolchain.astro';
 import LinksSection from '../components/LinksSection.astro';
+import { actionLinks, primaryCtas, profile, skillsSnapshot, wins } from '../config/profile';
 ---
-<PageLayout title="Justin Napolitano" description="A social-proof-heavy dating profile landing page">
+<PageLayout title="Justin Napolitano" description="A social-proof-heavy hiring landing page">
 	<main class="mx-auto flex max-w-5xl flex-col gap-12 px-4 py-12 sm:px-8">
-		<HeroSection />
-		<WinsBar />
-		<LinksSection />
+		<HeroSection profile={profile} primaryCtas={primaryCtas} />
+		<WinsBar wins={wins} />
+		<LinksSection actions={actionLinks} />
 		<Toolchain />
-		<SkillsSnapshot />
+		<SkillsSnapshot clusters={skillsSnapshot} />
 		<AdventurePitchForm />
 		<CalEmbed />
 	</main>

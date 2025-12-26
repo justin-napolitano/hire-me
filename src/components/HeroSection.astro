@@ -1,25 +1,25 @@
 ---
-import { profile } from '../config/profile';
+import type { ActionLink, ProfileSummary } from '../config/profile';
 
-const primaryCtas = [
-	{
-		label: 'Email a brief',
-		href: 'mailto:justin@justin-napolitano.com',
-		description: 'Reply within 24 hours with next steps.'
-	},
-	{
-		label: 'Book intro on Cal',
-		href: 'https://cal.com/justin-napolitano-gvu3p3/intro',
-		description: '15 minutes to trade context.',
-		external: true
-	}
-];
+type Props = {
+	profile: ProfileSummary;
+	primaryCtas?: ActionLink[];
+	badgeLabel?: string;
+	verificationHeading?: string;
+};
+
+const {
+	profile = { name: 'Anonymous', location: 'Remote' },
+	primaryCtas = [],
+	badgeLabel = 'Verified',
+	verificationHeading = 'Verification summary'
+} = Astro.props as Props;
 
 ---
 <section class="rounded-3xl border border-[var(--border-strong)] bg-gradient-to-br from-[var(--hero-gradient-start)] to-[var(--hero-gradient-end)] p-8 shadow-2xl shadow-[0_25px_60px_var(--hero-shadow)]">
 	<div class="flex flex-col gap-5">
 		<span class="w-fit rounded-full border border-[var(--surface-pill-border)] bg-[var(--surface-pill)] px-3 py-1 text-[0.8rem] uppercase tracking-[0.2em] text-[var(--text-label)]">
-			Verified
+			{badgeLabel}
 		</span>
 		<div class="flex flex-col gap-2">
 			<p class="text-4xl font-semibold text-[var(--text-primary)]">{profile.name}</p>
@@ -29,9 +29,9 @@ const primaryCtas = [
 				<p class="text-xl text-[var(--text-secondary)]">{profile.location}</p>
 			</div>
 		</div>
-		{profile.verificationSummary && (
-			<div class="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)] px-4 py-3">
-				<p class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-label)]">Verification summary</p>
+			{profile.verificationSummary && (
+				<div class="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)] px-4 py-3">
+					<p class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-label)]">{verificationHeading}</p>
 				<p class="mt-1 text-sm text-[var(--text-muted)]">{profile.verificationSummary}</p>
 			</div>
 		)}
