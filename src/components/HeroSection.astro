@@ -16,35 +16,35 @@ const primaryCtas = [
 ];
 
 ---
-<section class="rounded-3xl border border-rose-50/10 bg-gradient-to-br from-[#201512]/95 to-[#120906]/90 p-8 shadow-2xl shadow-rose-500/15">
+<section class="rounded-3xl border border-[var(--border-strong)] bg-gradient-to-br from-[var(--hero-gradient-start)] to-[var(--hero-gradient-end)] p-8 shadow-2xl shadow-[0_25px_60px_var(--hero-shadow)]">
 	<div class="flex flex-col gap-5">
-		<span class="w-fit rounded-full border border-amber-200/40 bg-amber-200/10 px-3 py-1 text-[0.8rem] uppercase tracking-[0.2em] text-amber-100">
+		<span class="w-fit rounded-full border border-[var(--surface-pill-border)] bg-[var(--surface-pill)] px-3 py-1 text-[0.8rem] uppercase tracking-[0.2em] text-[var(--text-label)]">
 			Verified
 		</span>
 		<div class="flex flex-col gap-2">
-			<p class="text-4xl font-semibold text-white">{profile.name}</p>
-			{profile.tagline && <p class="text-lg text-rose-100/90">{profile.tagline}</p>}
+			<p class="text-4xl font-semibold text-[var(--text-primary)]">{profile.name}</p>
+			{profile.tagline && <p class="text-lg text-[var(--text-secondary)]">{profile.tagline}</p>}
 			<div>
-				<p class="text-xs uppercase tracking-[0.15em] text-rose-300/70">Location</p>
-				<p class="text-xl text-rose-100/90">{profile.location}</p>
+				<p class="text-xs uppercase tracking-[0.15em] text-[var(--text-label)]">Location</p>
+				<p class="text-xl text-[var(--text-secondary)]">{profile.location}</p>
 			</div>
 		</div>
 		{profile.verificationSummary && (
-			<div class="rounded-2xl border border-rose-50/15 bg-[#140b08]/80 px-4 py-3">
-				<p class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-rose-200/70">Verification summary</p>
-				<p class="mt-1 text-sm text-rose-50/80">{profile.verificationSummary}</p>
+			<div class="rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)] px-4 py-3">
+				<p class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[var(--text-label)]">Verification summary</p>
+				<p class="mt-1 text-sm text-[var(--text-muted)]">{profile.verificationSummary}</p>
 			</div>
 		)}
 			<div class="flex flex-col gap-3 sm:flex-row">
 				{primaryCtas.map((cta) => (
 					<a
-						class="inline-flex flex-1 flex-col rounded-2xl bg-[#f15f4e] px-5 py-3 text-left text-white shadow-lg shadow-[#f15f4e]/30 transition transform hover:bg-[#f47b69] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f47b69]"
+						class="inline-flex flex-1 flex-col rounded-2xl bg-[var(--accent)] px-5 py-3 text-left text-[var(--accent-contrast)] shadow-lg shadow-[0_12px_30px_var(--hero-shadow)] transition transform hover:bg-[var(--accent-strong)] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)]"
 						href={cta.href}
 						target={cta.external ? '_blank' : undefined}
 						rel={cta.external ? 'noreferrer' : undefined}
 					>
 						<span class="text-base font-semibold">{cta.label}</span>
-						{cta.description && <span class="text-sm text-[#ffe7e0]">{cta.description}</span>}
+						{cta.description && <span class="text-sm text-[var(--text-secondary)]">{cta.description}</span>}
 					</a>
 				))}
 			</div>

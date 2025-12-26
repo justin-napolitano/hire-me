@@ -2,11 +2,11 @@
 import { galleryImages } from '../config/profile';
 const instagramHandle = 'jay.b.napolitano';
 ---
-<section class="rounded-3xl border border-white/10 bg-slate-900/40 p-6">
+<section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-6">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-sm uppercase tracking-[0.3em] text-slate-400">Visual evidence</p>
-		<h2 class="text-2xl font-semibold text-white">Instagram proof I leave my apartment</h2>
-		<p class="text-base text-slate-300">
+		<p class="text-sm uppercase tracking-[0.3em] text-[var(--text-label)]">Visual evidence</p>
+		<h2 class="text-2xl font-semibold text-[var(--text-primary)]">Instagram proof I leave my apartment</h2>
+		<p class="text-base text-[var(--text-secondary)]">
 			Fresh posts straight from @{instagramHandle}. Expect coffee cups, rooftops, dinner tables, and
 			the people who keep me accountable.
 		</p>
@@ -14,19 +14,19 @@ const instagramHandle = 'jay.b.napolitano';
 	<div class="grid gap-4 sm:grid-cols-2">
 		{galleryImages.map((image) => (
 			<a
-				class="group relative overflow-hidden rounded-2xl border border-white/5"
+				class="group relative overflow-hidden rounded-2xl border border-[var(--border-soft)]"
 				href={image.href ?? `https://instagram.com/${instagramHandle}`}
 				target="_blank"
 				rel="noreferrer"
 			>
 				<img src={image.src} alt={image.alt} class="h-72 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
 				<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-				<div class="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-sm text-white">
+				<div class="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 text-sm text-[var(--accent-contrast)]">
 					<div>
 						<p class="font-semibold">{image.caption}</p>
-						{image.location && <p class="text-xs text-white/80">{image.location}</p>}
+					{image.location && <p class="text-xs text-[var(--accent-contrast)] opacity-80">{image.location}</p>}
 					</div>
-					<span class="rounded-full border border-white/50 bg-white/10 px-3 py-1 text-xs uppercase tracking-wide">Open IG</span>
+					<span class="rounded-full border border-white/60 bg-white/20 px-3 py-1 text-xs uppercase tracking-wide text-[var(--accent-contrast)]">Open IG</span>
 				</div>
 			</a>
 		))}
