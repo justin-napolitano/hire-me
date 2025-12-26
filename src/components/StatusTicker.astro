@@ -6,17 +6,17 @@ const initialLine = payload.override ?? payload.statuses[0]?.text ?? 'Setting th
 const statusesAttr = JSON.stringify(payload.statuses);
 ---
 <div
-	class="rounded-2xl border border-rose-50/10 bg-[#150f0c]/80 px-5 py-4"
+	class="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-section)] px-5 py-4"
 	data-ticker
 	data-statuses={statusesAttr}
 	data-interval={payload.intervalMs}
 	data-override={payload.override ?? ''}
 >
-	<div class="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-rose-300/80">
-		<span class="h-2 w-2 animate-pulse rounded-full bg-amber-300"></span>
+	<div class="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[var(--text-label)]">
+		<span class="h-2 w-2 animate-pulse rounded-full bg-[var(--accent)]"></span>
 		<span>Operating cadence</span>
 	</div>
-	<p class="mt-2 text-lg text-rose-50" data-ticker-text>{initialLine}</p>
+	<p class="mt-2 text-lg text-[var(--text-secondary)]" data-ticker-text>{initialLine}</p>
 </div>
 
 <script>

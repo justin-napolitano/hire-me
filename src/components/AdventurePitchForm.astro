@@ -3,71 +3,71 @@ const introCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/intro';
 ---
 <section
 	id="project-brief"
-	class="rounded-3xl border border-rose-50/15 bg-[#150e0c]/85 p-8 shadow-lg shadow-amber-500/10"
+	class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section-strong)] p-8 shadow-lg"
 	data-cal={introCalUrl}
 >
 	<div class="flex flex-col gap-6">
 		<header class="flex flex-col gap-2">
-			<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Project brief</p>
-			<h2 class="text-3xl font-semibold text-white">Tell me about the role or sprint</h2>
-			<p class="text-base text-slate-300">
+			<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Project brief</p>
+			<h2 class="text-3xl font-semibold text-[var(--text-primary)]">Tell me about the role or sprint</h2>
+			<p class="text-base text-[var(--text-secondary)]">
 				Share who\'s involved, how success is defined, timelines, and any constraints—I respond quickly with the best path forward.
 			</p>
 		</header>
 		<form id="brief-form" class="grid gap-4" method="post" action="/api/pitch">
-			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 				Contact name
 				<input
-					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					class="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 					type="text"
 					name="name"
 					required
 					placeholder="You, the team, or agency lead"
 				/>
 			</label>
-			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 				Best reply channel
 				<input
-					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					class="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 					type="text"
 					name="contact"
 					required
 					placeholder="Email, Signal, or phone"
 				/>
 			</label>
-			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 				Project or role details
 				<textarea
-					class="min-h-[140px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					class="min-h-[140px] rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 					name="adventure"
 					required
 					placeholder="Lifecycle relaunch, marketing ops overhaul, embedded GTM lead—be specific"
 				></textarea>
 			</label>
 			<div class="grid gap-4 md:grid-cols-2">
-				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 					Ideal timing
 					<input
-						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+						class="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 						type="text"
 						name="timeline"
 						placeholder="Next quarter, ASAP, pilot window, etc."
 					/>
 				</label>
-				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+				<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 					Team vibe / constraints
 					<input
-						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+						class="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 						type="text"
 						name="vibes"
 						placeholder="Hands-on, fully remote, budget guardrails, etc."
 					/>
 				</label>
 			</div>
-			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-[var(--text-secondary)]">
 				Anything else I should know?
 				<textarea
-					class="min-h-[100px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
+					class="min-h-[100px] rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-input)] px-4 py-3 text-base text-[var(--text-primary)] placeholder:text-[var(--text-soft)] focus:border-[var(--accent)] focus:outline-none"
 					name="extras"
 					placeholder="Budget, stakeholders, decision timelines, other notes"
 				></textarea>
@@ -75,7 +75,7 @@ const introCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/intro';
 			<div class="flex flex-col gap-2">
 				<button
 					type="submit"
-					class="inline-flex items-center justify-center rounded-2xl bg-[#f15f4e] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-[#f15f4e]/30 transition hover:bg-[#f47b69] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f47b69] disabled:translate-y-0 disabled:bg-[#f15f4e]/70 disabled:shadow-none disabled:opacity-60"
+					class="inline-flex items-center justify-center rounded-2xl bg-[var(--accent)] px-6 py-3 text-base font-semibold text-[var(--accent-contrast)] shadow-lg shadow-[0_12px_30px_var(--hero-shadow)] transition hover:bg-[var(--accent-strong)] hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] disabled:translate-y-0 disabled:shadow-none disabled:opacity-60"
 				>
 					Send the brief
 				</button>
@@ -83,15 +83,15 @@ const introCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/intro';
 					href={introCalUrl}
 					target="_blank"
 					rel="noreferrer"
-					class="text-sm text-rose-200/80 underline-offset-4 transition hover:text-white hover:underline"
+					class="text-sm text-[var(--text-link)] underline-offset-4 transition hover:text-[var(--accent)] hover:underline"
 				>
 					Already aligned? Book the intro.
 				</a>
 			</div>
 		</form>
-		<p id="brief-feedback" class="text-sm text-rose-200/80" aria-live="polite">
+		<p id="brief-feedback" class="text-sm text-[var(--text-muted)]" aria-live="polite">
 			Expect a reply from justin@justin-napolitano.com once I review the calendar. Already in motion?
-			<a class="text-emerald-300 underline-offset-4 hover:underline" href={introCalUrl} target="_blank" rel="noreferrer">
+			<a class="text-[var(--text-link)] underline-offset-4 hover:underline" href={introCalUrl} target="_blank" rel="noreferrer">
 				cal.com/justin-napolitano-gvu3p3/intro
 			</a>
 		</p>
@@ -112,11 +112,11 @@ const introCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/intro';
 		} else {
 			feedback.textContent = message;
 		}
-		feedback.classList.remove('text-amber-300', 'text-rose-300');
+		feedback.classList.remove('text-feedback-success', 'text-feedback-error');
 		if (state === 'success') {
-			feedback.classList.add('text-amber-300');
+			feedback.classList.add('text-feedback-success');
 		} else if (state === 'error') {
-			feedback.classList.add('text-rose-300');
+			feedback.classList.add('text-feedback-error');
 		}
 	}
 

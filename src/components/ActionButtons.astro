@@ -4,13 +4,13 @@ import { actionLinks } from '../config/profile';
 <div class="grid gap-4 md:grid-cols-3">
 	{actionLinks.map((action) => (
 		<a
-			class="group flex items-center gap-3 rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-left transition hover:border-amber-200/50 hover:bg-[#25170f]"
+			class="group flex items-center gap-3 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-card-muted)] px-4 py-3 text-left transition hover:border-[var(--border-heavy)] hover:bg-[var(--surface-card)]"
 			href={action.href}
 			target={action.external ? '_blank' : undefined}
 			rel={action.external ? 'noreferrer' : undefined}
 		>
 			{action.icon && (
-				<span class="flex size-11 items-center justify-center rounded-2xl bg-white/10">
+				<span class="flex size-11 items-center justify-center rounded-2xl border border-[var(--icon-chip-border)] bg-[var(--icon-chip-bg)]">
 					<img
 						src={action.icon}
 						alt=""
@@ -22,8 +22,8 @@ import { actionLinks } from '../config/profile';
 				</span>
 			)}
 			<div class="flex flex-col">
-				<span class="text-base font-semibold text-white">{action.label}</span>
-				{action.description && <span class="text-sm text-rose-200/80">{action.description}</span>}
+				<span class="text-base font-semibold text-[var(--text-primary)]">{action.label}</span>
+				{action.description && <span class="text-sm text-[var(--text-muted)]">{action.description}</span>}
 			</div>
 		</a>
 	))}

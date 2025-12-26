@@ -10,9 +10,11 @@ const {
 	title = 'Justin Napolitano',
 	description = 'Social proof forward dating profile experience.'
 } = Astro.props as Props;
+
+const showThemeDebugControls = true;
 ---
 <!doctype html>
-<html lang="en" class="scroll-smooth bg-[#120d0b]">
+<html lang="en" class="scroll-smooth bg-[var(--page-bg)]">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,8 +22,100 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{showThemeDebugControls && (
+			<script is:inline>
+				(() => {
+					const STORAGE_KEY = 'theme-debug-mode';
+					try {
+						const stored = localStorage.getItem(STORAGE_KEY);
+						if (stored === 'dark' || stored === 'light') {
+							document.documentElement.dataset.theme = stored;
+						} else {
+							document.documentElement.removeAttribute('data-theme');
+						}
+					} catch (error) {
+						console.warn('Theme debug storage unavailable', error);
+					}
+				})();
+			</script>
+		)}
 	</head>
-	<body class="min-h-screen bg-transparent text-rose-50 antialiased">
+	<body class="min-h-screen bg-transparent text-[var(--text-primary)] antialiased">
 		<slot />
+		{showThemeDebugControls && (
+			<div class="fixed bottom-4 right-4 z-50 text-xs">
+				<button
+					id="theme-debug-toggle"
+					type="button"
+					class="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-[var(--surface-section)] px-4 py-2 text-[var(--text-primary)] shadow-lg shadow-[0_8px_20px_var(--shadow-strong)]"
+				>
+					<span class="font-semibold uppercase tracking-wide">Theme</span>
+					<span id="theme-debug-label" class="rounded-full bg-[var(--surface-card-muted)] px-2 py-0.5 text-[var(--text-secondary)]">
+						auto
+					</span>
+				</button>
+			</div>
+		)}
+		{showThemeDebugControls && (
+			<script is:inline>
+				(() => {
+					const STORAGE_KEY = 'theme-debug-mode';
+					const modes = ['auto', 'light', 'dark'];
+					const root = document.documentElement;
+					const labelId = 'theme-debug-label';
+
+					const safeGet = () => {
+						try {
+							return localStorage.getItem(STORAGE_KEY);
+						} catch (error) {
+							console.warn('Theme debug storage unavailable', error);
+							return null;
+						}
+					};
+
+					const safeSet = (value) => {
+						try {
+							localStorage.setItem(STORAGE_KEY, value);
+						} catch (error) {
+							console.warn('Theme debug storage unavailable', error);
+						}
+					};
+
+					const applyMode = (mode) => {
+						if (mode === 'dark' || mode === 'light') {
+							root.dataset.theme = mode;
+						} else {
+							root.removeAttribute('data-theme');
+						}
+						const label = document.getElementById(labelId);
+						if (label) {
+							label.textContent = mode;
+						}
+					};
+
+					const init = () => {
+						const toggle = document.getElementById('theme-debug-toggle');
+						if (!toggle) return;
+						let current = safeGet() ?? 'auto';
+						if (!modes.includes(current)) {
+							current = 'auto';
+						}
+						applyMode(current);
+						toggle.addEventListener('click', () => {
+							const nextIndex = (modes.indexOf(current) + 1) % modes.length;
+							current = modes[nextIndex];
+							safeSet(current);
+							applyMode(current);
+						});
+					};
+
+					if (document.readyState === 'loading') {
+						document.addEventListener('DOMContentLoaded', init, { once: true });
+					} else {
+						init();
+					}
+				})();
+			</script>
+		)}
 	</body>
 </html>

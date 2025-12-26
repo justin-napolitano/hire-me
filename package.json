@@ -2,14 +2,14 @@
   "name": "dating-profile",
   "type": "module",
   "version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro",
-		"docker:up": "docker compose up --build",
-		"docker:down": "docker compose down"
-	},
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
+  },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",

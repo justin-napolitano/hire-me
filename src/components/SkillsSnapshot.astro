@@ -17,11 +17,11 @@ const clampYearsForDots = (years: number = 0) => {
 
 const labelForLevel = (level: number) => levelLabels[level] ?? '';
 ---
-<section class="rounded-3xl border border-rose-50/10 bg-[#150e0c]/85 p-8">
+<section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-8">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Skill coverage</p>
-		<h2 class="text-3xl font-semibold text-white">Snapshot of where I specialize</h2>
-		<p class="text-sm text-rose-200/80">
+		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Skill coverage</p>
+		<h2 class="text-3xl font-semibold text-[var(--text-primary)]">Snapshot of where I specialize</h2>
+		<p class="text-sm text-[var(--text-muted)]">
 			Focus lanes with tactile read on years in the stack rather than blocks of text.
 		</p>
 	</header>
@@ -29,38 +29,38 @@ const labelForLevel = (level: number) => levelLabels[level] ?? '';
 		{skillsSnapshot.map((cluster) => {
 			const primary = cluster.focus === 'Primary focus';
 			const cardClasses = primary
-				? 'rounded-2xl border border-rose-50/10 bg-[#201511]/85 p-5 shadow-lg shadow-black/20'
-				: 'rounded-2xl border border-rose-50/5 bg-[#120a07]/80 p-5 shadow-inner shadow-black/30';
+				? 'rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-card)] p-5 shadow-lg'
+				: 'rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card-muted)] p-5 shadow-inner';
 			return (
 				<article class={cardClasses}>
 				<div class="flex flex-col gap-3">
-					<div class="flex flex-wrap items-center justify-between gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-rose-300/70">
+					<div class="flex flex-wrap items-center justify-between gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-[var(--text-label)]">
 						<span>{cluster.title}</span>
-						<span class="rounded-full border border-rose-50/20 px-3 py-1 text-[0.55rem] tracking-[0.25em] text-amber-200">
+						<span class="rounded-full border border-[var(--surface-pill-border)] bg-[var(--surface-pill)] px-3 py-1 text-[0.55rem] tracking-[0.25em] text-[var(--text-label)]">
 							{cluster.focus}
 						</span>
 					</div>
 					{cluster.headline && (
-						<p class="text-sm text-rose-100/80">{cluster.headline}</p>
+						<p class="text-sm text-[var(--text-secondary)]">{cluster.headline}</p>
 					)}
 				</div>
 				<ul class="mt-4 flex flex-col gap-3">
 					{cluster.skills.map((skill) => {
 						const filledDots = clampYearsForDots(skill.years);
 						return (
-							<li class="rounded-xl border border-rose-50/5 bg-[#1d120e]/70 p-3">
+							<li class="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-card-muted)] p-3">
 								<div class="flex flex-wrap justify-between gap-3">
 									<div class="flex min-w-[160px] flex-col">
-										<span class="text-sm font-semibold text-white">{skill.name}</span>
-										<span class="text-[0.6rem] uppercase tracking-[0.28em] text-rose-200/70">{labelForLevel(skill.level)}</span>
+										<span class="text-sm font-semibold text-[var(--text-primary)]">{skill.name}</span>
+										<span class="text-[0.6rem] uppercase tracking-[0.28em] text-[var(--text-label)]">{labelForLevel(skill.level)}</span>
 									</div>
 									<div class="flex items-center gap-2" aria-label={`${skill.name} — ${skill.years} yrs`} title={`${skill.years} yrs experience`}>
 										<div class="flex gap-1">
 											{Array.from({ length: DOT_COUNT }).map((_, idx) => (
-												<span class={`h-2.5 w-2.5 rounded-full ${idx < filledDots ? 'bg-amber-300 shadow shadow-amber-200/30' : 'bg-rose-50/10'}`}></span>
+												<span class={`h-2.5 w-2.5 rounded-full ${idx < filledDots ? 'bg-[var(--accent)]' : 'bg-[var(--border-soft)] opacity-50'}`}></span>
 											))}
 										</div>
-										<span class="text-[0.65rem] text-rose-100/70">{skill.years}+ yrs</span>
+										<span class="text-[0.65rem] text-[var(--text-muted)]">{skill.years}+ yrs</span>
 									</div>
 								</div>
 							</li>

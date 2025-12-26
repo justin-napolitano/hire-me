@@ -1,10 +1,13 @@
-<section class="rounded-3xl border border-rose-50/10 bg-[#120a08]/70 p-6">
+<section class="rounded-3xl border border-[var(--border-strong)] bg-[var(--surface-section)] p-6">
 	<header class="mb-4">
-		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Schedule</p>
+		<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-label)]">Schedule</p>
 	</header>
-	<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-intro" class="h-[620px] rounded-2xl border border-rose-50/15 bg-[#1a110d]/60"></div>
+	<div class="h-[620px] rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-card)]">
+		<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-intro"></div>
+	</div>
 </section>
-<script is:inline type="text/javascript">
+<!-- Cal inline embed code begins -->
+<script type="text/javascript">
 	(function (C, A, L) {
 		let p = function (a, ar) {
 			a.q.push(ar);
@@ -44,5 +47,50 @@
 		calLink: 'justin-napolitano-gvu3p3/intro'
 	});
 
-	Cal.ns.intro('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+	const getPageTheme = () => {
+		const explicit = document.documentElement.dataset.theme;
+		if (explicit === 'light' || explicit === 'dark') return explicit;
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	};
+
+	const applyCalTheme = () => {
+		const mode = getPageTheme();
+		const lightBrand = '#f15f4e';
+		const darkBrand = '#fef6f1';
+		const lightBackground = '#fff6ef';
+		const darkBackground = '#180f0c';
+
+		Cal.ns.intro('ui', {
+			hideEventTypeDetails: false,
+			layout: 'month_view',
+			theme: mode,
+			brandColor: mode === 'dark' ? darkBrand : lightBrand,
+			brandColorLight: lightBrand,
+			brandColorDark: darkBrand,
+			backgroundColor: mode === 'dark' ? darkBackground : lightBackground,
+			backgroundColorLight: lightBackground,
+			backgroundColorDark: darkBackground
+		});
+	};
+
+	applyCalTheme();
+
+	const media = window.matchMedia('(prefers-color-scheme: dark)');
+	if (media.addEventListener) {
+		media.addEventListener('change', applyCalTheme);
+	} else if (media.addListener) {
+		media.addListener(applyCalTheme);
+	}
+
+	const observer = new MutationObserver((mutations) => {
+		for (const mutation of mutations) {
+			if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+				applyCalTheme();
+				break;
+			}
+		}
+	});
+
+	observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 </script>
+<!-- Cal inline embed code ends -->
