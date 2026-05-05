@@ -2,95 +2,93 @@
   "fields": {
     "completion_pr": {
       "data_type": "text",
-      "field_id": "pending:completion_pr"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW50"
     },
     "dependency_summary": {
       "data_type": "text",
-      "field_id": "pending:dependency_summary"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW64"
     },
     "finalization_state": {
       "data_type": "single_select",
-      "field_id": "pending:finalization_state",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW_o",
       "options": {
-        "merged_to_main": "pending:finalization_state:merged_to_main",
-        "not_finalized": "pending:finalization_state:not_finalized"
+        "merged_to_main": "dd5c7a96",
+        "not_finalized": "aec7eb99"
       }
     },
     "gating_class": {
       "data_type": "single_select",
-      "field_id": "pending:gating_class",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW4w",
       "options": {
-        "auto_runnable": "pending:gating_class:auto_runnable",
-        "decision_gated": "pending:gating_class:decision_gated",
-        "review_gated": "pending:gating_class:review_gated"
+        "auto_runnable": "56614f6f",
+        "decision_gated": "d2d0ad75",
+        "review_gated": "16eca58a"
       }
     },
     "goal_area": {
       "data_type": "single_select",
-      "field_id": "pending:goal_area",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW58",
       "options": {
-        "governance": "pending:goal_area:governance",
-        "integration": "pending:goal_area:integration",
-        "orchestrator-runtime": "pending:goal_area:orchestrator-runtime",
-        "provider-sync": "pending:goal_area:provider-sync",
-        "runtime-governance": "pending:goal_area:runtime-governance"
+        "governance": "6af7fe69",
+        "integration": "894ac61e",
+        "orchestrator-runtime": "35acc58c",
+        "provider-sync": "8b6c131e",
+        "runtime-governance": "f52c7daf"
       }
     },
     "human_review_state": {
       "data_type": "single_select",
-      "field_id": "pending:human_review_state",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW7A",
       "options": {
-        "in_review": "pending:human_review_state:in_review",
-        "merged": "pending:human_review_state:merged",
-        "not_requested": "pending:human_review_state:not_requested",
-        "ready_for_review": "pending:human_review_state:ready_for_review"
+        "in_review": "535bad07",
+        "merged": "54772242",
+        "not_requested": "dfde8dbb",
+        "ready_for_review": "5bf6d0e7"
       }
     },
     "implementation_branch": {
       "data_type": "text",
-      "field_id": "pending:implementation_branch"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW5s"
     },
     "merge_readiness": {
       "data_type": "single_select",
-      "field_id": "pending:merge_readiness",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW-Q",
       "options": {
-        "blocked": "pending:merge_readiness:blocked",
-        "local_only": "pending:merge_readiness:local_only",
-        "ready": "pending:merge_readiness:ready"
+        "blocked": "8896e0b1",
+        "local_only": "c47181b0",
+        "ready": "028f702d"
       }
     },
     "node_id": {
       "data_type": "text",
-      "field_id": "pending:node_id"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW4k"
     },
     "pr_url": {
       "data_type": "text",
-      "field_id": "pending:pr_url"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW78"
     },
     "smoke_status": {
       "data_type": "single_select",
-      "field_id": "pending:smoke_status",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW8c",
       "options": {
-        "failed": "pending:smoke_status:failed",
-        "passed": "pending:smoke_status:passed",
-        "pending": "pending:smoke_status:pending"
+        "failed": "493c6e03",
+        "passed": "d0f91b4a",
+        "pending": "90046a21"
       }
     },
     "status": {
       "data_type": "single_select",
-      "field_id": "pending:status",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW3E",
       "options": {
-        "blocked": "pending:status:blocked",
-        "completed": "pending:status:completed",
-        "decision_gated": "pending:status:decision_gated",
-        "ready": "pending:status:ready",
-        "review_gated": "pending:status:review_gated"
+        "Done": "98236657",
+        "In Progress": "47fc9ee4",
+        "Todo": "f75ad846"
       },
       "provider_managed": true
     },
     "target_execplan_id": {
       "data_type": "text",
-      "field_id": "pending:target_execplan_id"
+      "field_id": "PVTF_lAHOA02wdc4BWx33zhSDW4o"
     },
     "title": {
       "data_type": "title",
@@ -98,15 +96,14 @@
     },
     "validation_status": {
       "data_type": "single_select",
-      "field_id": "pending:validation_status",
+      "field_id": "PVTSSF_lAHOA02wdc4BWx33zhSDW8U",
       "options": {
-        "failed": "pending:validation_status:failed",
-        "passed": "pending:validation_status:passed",
-        "pending": "pending:validation_status:pending"
+        "failed": "cba7a791",
+        "passed": "5925a8f9",
+        "pending": "56762062"
       }
     }
   },
   "item_ids_by_node_id": {},
-  "output_path": "/Users/justin/repos/hire-me/artifacts/provider-sync/github-projects-field-map.json",
-  "project_id": "pending:project_id"
+  "project_id": "PVT_kwHOA02wdc4BWx33"
 }
