@@ -1,0 +1,51 @@
+{
+  "last_updated": "2026-05-05T00:00:00Z",
+  "nodes": [
+    {
+      "goal_area": "product",
+      "initiative_branch": "initiative/hire-suite-maintenance",
+      "node_id": "initiative-hire-suite-maintenance",
+      "status": "in_progress",
+      "title": "JNAP Hire maintenance",
+      "type": "initiative"
+    },
+    {
+      "completion_ref": "bootstrap:repo-initialized",
+      "goal_area": "governance",
+      "implementation_branch": "impl-execplan/20260505-hire-me-bootstrap-governed-project-codex-01-execplan-codex-01-20260505",
+      "initiative_branch": "initiative/hire-suite-maintenance",
+      "integration_mode": "via_initiative",
+      "node_id": "rwg-001",
+      "parent_initiative_node": "initiative-hire-suite-maintenance",
+      "status": "completed",
+      "target_execplan_id": "20260505-hire-me-bootstrap-governed-project-codex-01-execplan",
+      "title": "Bootstrap governed project skeleton",
+      "type": "execplan"
+    },
+    {
+      "goal_area": "product",
+      "implementation_branch": "impl-execplan/20260505-hire-me-hire-conversion-contract-codex-01-execplan-codex-01-20260505",
+      "initiative_branch": "initiative/hire-suite-maintenance",
+      "integration_mode": "via_initiative",
+      "node_id": "rwg-002",
+      "parent_initiative_node": "initiative-hire-suite-maintenance",
+      "status": "decision_gated",
+      "target_execplan_id": "20260505-hire-me-hire-conversion-contract-codex-01-execplan",
+      "title": "Define hiring landing page conversion flow and validation checks",
+      "type": "execplan"
+    },
+    {
+      "goal_area": "product",
+      "implementation_branch": "impl-execplan/20260505-hire-me-hire-application-funnel-codex-01-execplan-codex-01-20260505",
+      "initiative_branch": "initiative/hire-suite-maintenance",
+      "integration_mode": "via_initiative",
+      "node_id": "rwg-003",
+      "parent_initiative_node": "initiative-hire-suite-maintenance",
+      "status": "decision_gated",
+      "target_execplan_id": "20260505-hire-me-hire-application-funnel-codex-01-execplan",
+      "title": "Plan job-application funnel instrumentation and content handoff",
+      "type": "execplan"
+    }
+  ],
+  "version": 1
+}
