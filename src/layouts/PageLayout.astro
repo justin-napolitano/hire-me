@@ -41,6 +41,7 @@ const showThemeDebugControls = true;
 		)}
 	</head>
 	<body class="min-h-screen bg-transparent text-[var(--text-primary)] antialiased">
+    <div class="brand-site-surface">
 		<slot />
 		{showThemeDebugControls && (
 			<div class="fixed bottom-4 right-4 z-50 text-xs">
@@ -117,5 +118,6 @@ const showThemeDebugControls = true;
 				})();
 			</script>
 		)}
-	</body>
+	    </div>
+  </body>
 </html>
