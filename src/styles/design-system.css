@@ -121,12 +121,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
 @media print { body { background: #fff; color: #25251f; } #theme-debug-toggle, #project-brief, #my-cal-inline-intro { display: none; } main > section { break-inside: avoid; } }
 
-/* Shared approved palette: midpoint-red text accents, green native scroll canvas. */
+/* Shared approved palette: deep-forest text accents, green native scroll canvas. */
 @media screen {
   :root, :root[data-theme], :root[data-brand-theme] {
-    --brand-accent: #d01527;
+    --brand-accent: #285447;
     --brand-text-accent: var(--brand-accent);
-    --brand-highlight: #fff0f2;
+    --brand-highlight: #e5eee7;
     --brand-canvas: #356349;
     --brand-page: var(--page-background);
     --accent-contrast: #fcfbf8;
@@ -155,10 +155,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media screen {
-  :root[data-theme='dark'] { --brand-text-accent:#ff8792; }
+  :root[data-theme='dark'] { --brand-text-accent:#acd0b8; }
 }
 @media screen and (prefers-color-scheme:dark) {
-  :root:not([data-theme]) { --brand-text-accent:#ff8792; }
+  :root:not([data-theme]) { --brand-text-accent:#acd0b8; }
 }
 
 @media screen {
